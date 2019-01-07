@@ -9,4 +9,4 @@ If you want to provide your own hook implementations, for example control file s
 as files are being copied, you can override the core hooks by putting a file with the same
 name as the core hook in this location. Sgtk will basically look in this folder first as it is 
 requesting a core hook - if it doesn't find the core hook here, it will look in its internal 
-platform location.
+platform location.vbv
