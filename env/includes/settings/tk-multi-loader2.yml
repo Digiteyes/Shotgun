@@ -127,6 +127,7 @@ settings.tk-multi-loader2.maya:
 
 # nuke
 settings.tk-multi-loader2.nuke:
+  actions_hook: '{config}\tk-multi-loader2\tk-nuke_actions.py'
   action_mappings:
     Alembic Cache: [read_node]
     ABC Camera: [read_cam]
