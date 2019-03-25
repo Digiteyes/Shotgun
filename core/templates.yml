@@ -309,7 +309,7 @@ paths:
         root_name: 'primary'
     # The location of WIP files
     max_shot_work:
-        definition: '@shot_root/work/3dsmax/{name}.v{version}.max'
+        definition: '@shot_root/work/3dsmax/{Sequence}_{Shot}_{Step}_{name}.v{version}.max'
         root_name: 'primary'
     # The location of backups of WIP files
     max_shot_snapshot:
@@ -317,7 +317,7 @@ paths:
         root_name: 'primary'
     # The location of published maya files
     max_shot_publish:
-        definition: '@shot_root/publish/3dsmax/{name}.v{version}.max'
+        definition: '@shot_root/publish/3dsmax/{Sequence}_{Shot}_{Step}_{name}.v{version}.max'
         root_name: 'primary'
 
 
@@ -590,7 +590,7 @@ paths:
         root_name: 'primary'
     # The location of WIP files
     max_asset_work:
-        definition: '@asset_root/work/3dsmax/{name}.v{version}.max'
+        definition: '@asset_root/work/3dsmax/{sg_asset_type}_{Asset}_{Step}_{name}.v{version}.max'
         root_name: 'primary'
     # The location of backups of WIP files
     max_asset_snapshot:
@@ -598,7 +598,7 @@ paths:
         root_name: 'primary'
     # The location of published maya files
     max_asset_publish:
-        definition: '@asset_root/publish/3dsmax/{name}.v{version}.max'
+        definition: '@asset_root/publish/3dsmax/{sg_asset_type}_{Asset}_{Step}_{name}.v{version}.max'
         root_name: 'primary'
 
 
