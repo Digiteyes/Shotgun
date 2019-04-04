@@ -14,6 +14,8 @@ import maya.cmds as cmds
 import maya.mel as mel
 import sgtk
 import re
+import maya.cmds as cmds
+import rfm2
 
 HookBaseClass = sgtk.get_hook_baseclass()
 
@@ -79,16 +81,54 @@ class MayaSessionCollector(HookBaseClass):
       if typef == "Asset" :
         if stepf == "Model" or stepf == "RigImport" :
 
-          objs = cmds.ls(dag=True, type="mesh")
-          for obj in objs :
-              objr = obj.replace("Shape","")
-              transforms = cmds.listRelatives(obj,parent=True)
-              t = transforms[0]
-              obrena = namef  + t
-              if namef in t :
-                  a = 1
-              else :
-                  cmds.rename(t , obrena)
+          # 1st Pass Duplacting check :
+
+          try :
+            #Find all objects that have the same shortname as another
+            #We can indentify them because they have | in the name
+            duplicates = [f for f in cmds.ls() if '|' in f]
+            #Sort them by hierarchy so that we don't rename a parent before a child.
+            duplicates.sort(key=lambda obj: obj.count('|'), reverse=True)
+             
+            #if we have duplicates, rename them
+            if duplicates:
+                for name in duplicates:
+                    # extract the base name
+                    m = re.compile("[^|]*$").search(name) 
+                    shortname = m.group(0)
+         
+                    # extract the numeric suffix
+                    m2 = re.compile(".*[^0-9]").match(shortname) 
+                    if m2:
+                        stripSuffix = m2.group(0)
+                    else:
+                        stripSuffix = shortname
+                     
+                    #rename, adding '#' as the suffix, which tells maya to find the next available number
+                    newname = cmds.rename(name, (stripSuffix + "#")) 
+                    print "renamed %s to %s" % (name, newname)
+                     
+                print "------- Auto Rename Phase 1 ------- END "
+            else:
+                print "------- Auto Rename Phase 1 ------- No duplicates found "
+          except:
+            print "You have probably duplicated shape in one object ------- Auto Rename Phase 1 ------- "
+
+          try:
+            objs = cmds.ls(dag=True, type="mesh")
+            for obj in objs :
+                objr = obj.replace("Shape","")
+                transforms = cmds.listRelatives(obj,parent=True)
+                t = transforms[0]
+                obrena = namef  + t
+                if namef in t :
+                    a = 1
+                else :
+                    cmds.rename(t , obrena)
+                    print "renamed %s to %s" % (t, obrena)
+            print "------- Auto Rename Phase 2 ------- END "
+          except:
+            print "You have probably duplicated shape in one object ------- Auto Rename Phase 2 ------- "
 
 
 
@@ -481,15 +521,58 @@ class MayaSessionCollector(HookBaseClass):
             # see if there are any files on disk that match this pattern
             rendered_paths = glob.glob(frame_glob)
 
-            if rendered_paths:
-                # we only need one path to publish, so take the first one and
-                # let the base class collector handle it
-                item = super(MayaSessionCollector, self)._collect_file(
-                    parent_item,
-                    rendered_paths[0],
-                    frame_sequence=True
-                )
+            try :
 
-                # the item has been created. update the display name to include
-                # the an indication of what it is and why it was collected
-                item.name = "%s (Render Layer: %s)" % (item.name, layer)
+              path = rfm2.api.displays.get_displays(as_json = False)
+              filepath = cmds.file(q=True, sn=True)
+              filename = os.path.basename(filepath)
+              directory = os.path.dirname(filepath)
+
+              raw_name, extension = os.path.splitext(filename)
+              cams = cmds.ls( cameras=True)
+
+              frame = cmds.getAttr('defaultRenderGlobals.startFrame')
+              frame = int(frame)
+              frame = str(frame)
+              frame = frame.zfill(4)
+
+              rendered_paths = list()
+
+              for cam in cams:
+                  if cmds.getAttr(cam+".renderable"):
+                      rndcam = cam
+
+
+              path2 = path["displays"]
+              for key in path2.keys():
+                  path3 = path2[key]
+                  for key2 in path3.keys():
+                      if key2 == "filePath" :
+                          final = path3["filePath"].replace("<aov>", key)
+                          final = final.replace("<layer>", "")
+                          final = final.replace("<scene>", raw_name)
+                          final = final.replace("<ws>", directory)
+                          final = final.replace("<version>", "001")
+                          final = final.replace("<take>", "01")
+                          final = final.replace("<ext>", "exr")
+                          final = final.replace("<f4>", frame)
+                          final = final.replace("<camera>", rndcam)
+                          rendered_paths = final
+                          if os.path.isfile(rendered_paths):
+
+                            # we only need one path to publish, so take the first one and
+                            # let the base class collector handle it
+                            item = super(MayaSessionCollector, self)._collect_file(
+                                parent_item,
+                                rendered_paths,
+                                frame_sequence=True
+                            )
+
+                            # the item has been created. update the display name to include
+                            # the an indication of what it is and why it was collected
+                            item.name = "%s (Render Layer: %s)" % (item.name, layer)
+            
+            except:
+              print "No Renderman frame found"
+
+

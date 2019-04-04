@@ -240,9 +240,6 @@ paths:
         definition: '@shot_root/publish/maya/{Sequence}_{Shot}_{Step}_{name}.v{version}.{maya_extension}'
         root_name: 'primary'
     # Maya render path
-    maya_shot_render:
-        definition: '@shot_root/work/images/{maya.layer_name}_v{version}/{Sequence}_{Shot}_{maya.layer_name}_v{version}.{SEQ}.exr'
-        root_name: 'primary'
     maya_shot_camera_publish:
         definition: '@shot_root/publish/maya/cameras/{Sequence}_{Shot}_{name}.v{version}.abc'
         root_name: 'primary'
