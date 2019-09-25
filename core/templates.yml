@@ -197,21 +197,21 @@ paths:
 
     # The location of WIP files
     photoshop_shot_work:
-        definition: '@shot_root/work/photoshop/{name}.v{version}.psd'
+        definition: '@shot_root/work/photoshop/{Sequence}_{Shot}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
     shot_work_area_photoshop:
         definition: '@shot_root/work/photoshop'
         root_name: 'primary'
     # The location of backups of WIP files
     photoshop_shot_snapshot:
-        definition: '@shot_root/work/photoshop/snapshots/{name}.v{version}.{timestamp}.psd'
+        definition: '@shot_root/work/photoshop/snapshots/{Sequence}_{Shot}_{Step}_{name}.v{version}.{timestamp}.psd'
         root_name: 'primary'
     # The location of published files
     shot_publish_area_photoshop:
         definition: '@shot_root/publish/photoshop'
         root_name: 'primary'
     photoshop_shot_publish:
-        definition: '@shot_root/publish/photoshop/{name}.v{version}.psd'
+        definition: '@shot_root/publish/photoshop/{Sequence}_{Shot}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
 
 
@@ -472,21 +472,21 @@ paths:
 
     # The location of WIP files
     photoshop_asset_work:
-        definition: '@asset_root/work/photoshop/{name}.v{version}.psd'
+        definition: '@asset_root/work/photoshop/{sg_asset_type}_{Asset}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
     asset_work_area_photoshop:
         definition: '@asset_root/work/photoshop'
         root_name: 'primary'
     # The location of backups of WIP files
     photoshop_asset_snapshot:
-        definition: '@asset_root/work/photoshop/snapshots/{name}.v{version}.{timestamp}.psd'
+        definition: '@asset_root/work/photoshop/snapshots/{sg_asset_type}_{Asset}_{Step}_{name}.v{version}.{timestamp}.psd'
         root_name: 'primary'
     # The location of published files
     asset_publish_area_photoshop:
         definition: '@asset_root/publish/photoshop'
         root_name: 'primary'
     photoshop_asset_publish:
-        definition: '@asset_root/publish/photoshop/{name}.v{version}.psd'
+        definition: '@asset_root/publish/photoshop/{sg_asset_type}_{Asset}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
 
 
