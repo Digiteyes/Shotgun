@@ -75,6 +75,21 @@ keys:
     aov_name:
         type: str
 
+    # Represents the optional output name for frames written by the After Effects Publish Rendering Plugin
+    afx.comp:
+        alias: comp
+        type: str
+        filter_by: alphanumeric
+    afx.mov.ext:
+        alias: extension
+        type: str
+        choices:
+            mov: Quicktime Movie (.mov)
+            avi: Audio Video Interleaved (.avi)
+
+
+
+
     # these are used by the Hiero exporter and pipeline
     YYYY:
         type: int
@@ -213,6 +228,33 @@ paths:
     photoshop_shot_publish:
         definition: '@shot_root/publish/photoshop/{Sequence}_{Shot}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
+
+
+
+    #
+    # After Effects
+    #
+
+    # The location of WIP files
+    aftereffects_shot_work:
+        definition: '@shot_root/work/afx/{name}.v{version}.aep'
+    shot_work_area_aftereffects:
+        definition: '@shot_root/work/afx'
+    # The location of backups of WIP files
+    aftereffects_shot_snapshot:
+        definition: '@shot_root/work/afx/snapshots/{name}.v{version}.{timestamp}.aep'
+    # The location of published files
+    shot_publish_area_aftereffects:
+        definition: '@shot_root/publish/afx'
+    aftereffects_shot_publish:
+        definition: '@shot_root/publish/afx/{name}.v{version}.aep'
+    aftereffects_shot_render_pub_mono:
+        definition: '@shot_root/publish/elements/{name}/v{version}/{width}x{height}/{Shot}_{name}_{afx.comp}_v{version}.{SEQ}.tif'
+    # The following template uses {afx.mov.ext} this is a special key, that will be only there
+    # in the beta to support different extensions on mac and windows, while using the same
+    # output module (Lossless with Alpha)
+    aftereffects_shot_render_movie:
+        definition: '@shot_root/review/{Shot}_{name}_{afx.comp}_v{version}.{afx.mov.ext}'
 
 
     #
@@ -370,40 +412,40 @@ paths:
         root_name: 'primary'
     # write node outputs
     nuke_shot_render_mono_dpx:
-        definition: '@shot_root/work/images/DPX_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
+        definition: '@shot_root/work/images/{nuke.output}/DPX_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
         root_name: 'primary'
     nuke_shot_render_pub_mono_dpx:
-        definition: '@shot_root/publish/DPX_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
+        definition: '@shot_root/publish/{nuke.output}/DPX_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
         root_name: 'primary'
     nuke_shot_render_stereo:
-        definition: '@shot_root/work/images/EXR_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/work/images/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_pub_stereo:
-        definition: '@shot_root/publish/EXR_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/publish/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_mono:
-        definition: '@shot_root/work/images/EXR_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/work/images/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_pub_mono:
-        definition: '@shot_root/publish/EXR_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/publish/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_jpg:
-        definition: '@shot_root/work/images/JPG_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
+        definition: '@shot_root/work/images/{nuke.output}/JPG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
         root_name: 'primary'
     nuke_shot_render_pub_jpg:
-        definition: '@shot_root/publish/JPG_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
+        definition: '@shot_root/publish/{nuke.output}/JPG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
         root_name: 'primary'
     nuke_shot_render_png:
-        definition: '@shot_root/work/images/PNG_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
+        definition: '@shot_root/work/images/{nuke.output}/PNG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
         root_name: 'primary'
     nuke_shot_render_pub_png:
-        definition: '@shot_root/publish/PNG_{Sequence}_{Shot}_{Step}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
+        definition: '@shot_root/publish/{nuke.output}/PNG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
         root_name: 'primary'    
     nuke_shot_render_tiff:
-        definition: '@shot_root/work/images/tiff_{Sequence}_{Shot}_{Step}_{name}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
+        definition: '@shot_root/work/images/{nuke.output}/tiff_{Sequence}_{Shot}_{Step}_{name}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
         root_name: 'primary'
     nuke_shot_render_pub_tiff:
-        definition: '@shot_root/publish/TIFF_{Sequence}_{Shot}_{Step}_{name}_v{version}/{nuke.output}/{Sequence}_{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
+        definition: '@shot_root/publish/{nuke.output}/TIFF_{Sequence}_{Shot}_{Step}_{name}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
         root_name: 'primary'
     # review output
     shot_quicktime_quick:
@@ -488,6 +530,33 @@ paths:
     photoshop_asset_publish:
         definition: '@asset_root/publish/photoshop/{sg_asset_type}_{Asset}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
+
+
+
+    #
+    # after effects
+    #
+
+    # The location of WIP files
+    aftereffects_asset_work:
+        definition: '@asset_root/work/afx/{name}.v{version}.aep'
+    asset_work_area_aftereffects:
+        definition: '@asset_root/work/afx'
+    # The location of backups of WIP files
+    aftereffects_asset_snapshot:
+        definition: '@asset_root/work/afx/snapshots/{name}.v{version}.{timestamp}.aep'
+    # The location of published files
+    asset_publish_area_aftereffects:
+        definition: '@asset_root/publish/afx'
+    aftereffects_asset_publish:
+        definition: '@asset_root/publish/afx/{name}.v{version}.aep'
+    aftereffects_asset_render_pub_mono:
+        definition: '@asset_root/publish/elements/{name}/v{version}/{width}x{height}/{Asset}_{name}_{afx.comp}_v{version}.{SEQ}.tif'
+    # The following template uses {afx.mov.ext} this is a special key, that will be only there
+    # in the beta to support different extensions on mac and windows, while using the same
+    # output module (Lossless with Alpha)
+    aftereffects_asset_render_movie:
+        definition: '@asset_root/review/{Asset}_{name}_{afx.comp}_v{version}.{afx.mov.ext}'
 
 
     #

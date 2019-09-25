@@ -20,7 +20,6 @@ includes:
 - ./tk-multi-shotgunpanel.yml
 - ./tk-multi-snapshot.yml
 - ./tk-multi-workfiles2.yml
-- ./tk-multi-breakdown.yml
 
 ################################################################################
 
@@ -99,7 +98,8 @@ settings.tk-maya.shot_step:
   apps:
     tk-multi-about:
       location: "@apps.tk-multi-about.location"
-    tk-multi-breakdown: "@settings.tk-multi-breakdown.maya"
+    tk-multi-breakdown:
+      location: "@apps.tk-multi-breakdown.location"
     tk-multi-setframerange:
       location: "@apps.tk-multi-setframerange.location"
     tk-multi-loader2: "@settings.tk-multi-loader2.maya"

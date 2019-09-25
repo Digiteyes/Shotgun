@@ -18,8 +18,3 @@ includes:
 settings.tk-multi-breakdown.nukestudio:
   hook_scene_operations: '{self}/tk-nuke_scene_operations.py'
   location: "@apps.tk-multi-breakdown.location"
-
-
-settings.tk-multi-breakdown.maya:
-  hook_scene_operations: '{config}/tk-multi-breakdown/tk-maya_scene_operations.py'
-  location: "@apps.tk-multi-breakdown.location"
