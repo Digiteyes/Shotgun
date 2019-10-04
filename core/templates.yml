@@ -212,21 +212,21 @@ paths:
 
     # The location of WIP files
     photoshop_shot_work:
-        definition: '@shot_root/work/photoshop/{Sequence}_{Shot}_{Step}_{name}.v{version}.psd'
+        definition: '@shot_root/work/photoshop/{Shot}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
     shot_work_area_photoshop:
         definition: '@shot_root/work/photoshop'
         root_name: 'primary'
     # The location of backups of WIP files
     photoshop_shot_snapshot:
-        definition: '@shot_root/work/photoshop/snapshots/{Sequence}_{Shot}_{Step}_{name}.v{version}.{timestamp}.psd'
+        definition: '@shot_root/work/photoshop/snapshots/{Shot}_{Step}_{name}.v{version}.{timestamp}.psd'
         root_name: 'primary'
     # The location of published files
     shot_publish_area_photoshop:
         definition: '@shot_root/publish/photoshop'
         root_name: 'primary'
     photoshop_shot_publish:
-        definition: '@shot_root/publish/photoshop/{Sequence}_{Shot}_{Step}_{name}.v{version}.psd'
+        definition: '@shot_root/publish/photoshop/{Shot}_{Step}_{name}.v{version}.psd'
         root_name: 'primary'
 
 
@@ -237,17 +237,17 @@ paths:
 
     # The location of WIP files
     aftereffects_shot_work:
-        definition: '@shot_root/work/afx/{name}.v{version}.aep'
+        definition: '@shot_root/work/afx/{Shot}_{Step}_{name}.v{version}.aep'
     shot_work_area_aftereffects:
         definition: '@shot_root/work/afx'
     # The location of backups of WIP files
     aftereffects_shot_snapshot:
-        definition: '@shot_root/work/afx/snapshots/{name}.v{version}.{timestamp}.aep'
+        definition: '@shot_root/work/afx/snapshots/{Shot}_{Step}_{name}.v{version}.{timestamp}.aep'
     # The location of published files
     shot_publish_area_aftereffects:
         definition: '@shot_root/publish/afx'
     aftereffects_shot_publish:
-        definition: '@shot_root/publish/afx/{name}.v{version}.aep'
+        definition: '@shot_root/publish/afx/{Shot}_{Step}_{name}.v{version}.aep'
     aftereffects_shot_render_pub_mono:
         definition: '@shot_root/publish/elements/{name}/v{version}/{width}x{height}/{Shot}_{name}_{afx.comp}_v{version}.{SEQ}.tif'
     # The following template uses {afx.mov.ext} this is a special key, that will be only there
@@ -271,19 +271,19 @@ paths:
         root_name: 'primary'
     # The location of WIP files
     maya_shot_work:
-        definition: '@shot_root/work/maya/{Sequence}_{Shot}_{Step}_{name}.v{version}.{maya_extension}'
+        definition: '@shot_root/work/maya/{Shot}_{Step}_{name}.v{version}.{maya_extension}'
         root_name: 'primary'
     # The location of backups of WIP files
     maya_shot_snapshot:
-        definition: '@shot_root/work/maya/snapshots/{Sequence}_{Shot}_{Step}_{name}.v{version}.{timestamp}.{maya_extension}'
+        definition: '@shot_root/work/maya/snapshots/{Shot}_{Step}_{name}.v{version}.{timestamp}.{maya_extension}'
         root_name: 'primary'
     # The location of published maya files
     maya_shot_publish:
-        definition: '@shot_root/publish/maya/{Sequence}_{Shot}_{Step}_{name}.v{version}.{maya_extension}'
+        definition: '@shot_root/publish/maya/{Shot}_{Step}_{name}.v{version}.{maya_extension}'
         root_name: 'primary'
     # Maya render path
     maya_shot_camera_publish:
-        definition: '@shot_root/publish/maya/cameras/{Sequence}_{Shot}_{name}.v{version}.abc'
+        definition: '@shot_root/publish/maya/cameras/{Shot}_{name}.v{version}.abc'
         root_name: 'primary'
 
     #
@@ -300,15 +300,15 @@ paths:
         root_name: 'primary'
     # The location of WIP files
     houdini_shot_work:
-        definition: '@shot_root/work/houdini/{Sequence}_{Shot}_{Step}_{name}.v{version}.hip'
+        definition: '@shot_root/work/houdini/{Shot}_{Step}_{name}.v{version}.hip'
         root_name: 'primary'
     # The location of backups of WIP files
     houdini_shot_snapshot:
-        definition: '@shot_root/work/houdini/snapshots/{Sequence}_{Shot}_{Step}_{name}.v{version}.{timestamp}.hip'
+        definition: '@shot_root/work/houdini/snapshots/{Shot}_{Step}_{name}.v{version}.{timestamp}.hip'
         root_name: 'primary'
     # The location of published houdini files
     houdini_shot_publish:
-        definition: '@shot_root/publish/houdini/{Sequence}_{Shot}_{Step}_{name}.v{version}.hip'
+        definition: '@shot_root/publish/houdini/{Shot}_{Step}_{name}.v{version}.hip'
         root_name: 'primary'
     # Alembic caches
     houdini_shot_work_alembic_cache:
@@ -348,7 +348,7 @@ paths:
         root_name: 'primary'
     # The location of WIP files
     max_shot_work:
-        definition: '@shot_root/work/3dsmax/{Sequence}_{Shot}_{Step}_{name}.v{version}.max'
+        definition: '@shot_root/work/3dsmax/{Shot}_{Step}_{name}.v{version}.max'
         root_name: 'primary'
     # The location of backups of WIP files
     max_shot_snapshot:
@@ -356,7 +356,7 @@ paths:
         root_name: 'primary'
     # The location of published maya files
     max_shot_publish:
-        definition: '@shot_root/publish/3dsmax/{Sequence}_{Shot}_{Step}_{name}.v{version}.max'
+        definition: '@shot_root/publish/3dsmax/{Shot}_{Step}_{name}.v{version}.max'
         root_name: 'primary'
 
 
@@ -400,59 +400,59 @@ paths:
         root_name: 'primary'
     # The location of WIP script files
     nuke_shot_work:
-        definition: '@shot_root/work/nuke/{Sequence}_{Shot}_{Step}_{name}.v{version}.nk'
+        definition: '@shot_root/work/nuke/{Shot}_{Step}_{name}.v{version}.nk'
         root_name: 'primary'
     # The location of backups of WIP files
     nuke_shot_snapshot:
-        definition: '@shot_root/work/nuke/snapshots/{Sequence}_{Shot}_{Step}_{name}.v{version}.{timestamp}.nk'
+        definition: '@shot_root/work/nuke/snapshots/{Shot}_{Step}_{name}.v{version}.{timestamp}.nk'
         root_name: 'primary'
     # The location of published nuke script files
     nuke_shot_publish:
-        definition: '@shot_root/publish/nuke/{Sequence}_{Shot}_{Step}_{name}.v{version}.nk'
+        definition: '@shot_root/publish/nuke/{Shot}_{Step}_{name}.v{version}.nk'
         root_name: 'primary'
     # write node outputs
     nuke_shot_render_mono_dpx:
-        definition: '@shot_root/work/images/{nuke.output}/DPX_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
+        definition: '@shot_root/work/images/{nuke.output}/DPX_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
         root_name: 'primary'
     nuke_shot_render_pub_mono_dpx:
-        definition: '@shot_root/publish/{nuke.output}/DPX_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
+        definition: '@shot_root/publish/{nuke.output}/DPX_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.dpx'
         root_name: 'primary'
     nuke_shot_render_stereo:
-        definition: '@shot_root/work/images/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/work/images/{nuke.output}/EXR_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_pub_stereo:
-        definition: '@shot_root/publish/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/publish/{nuke.output}/EXR_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_{eye}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_mono:
-        definition: '@shot_root/work/images/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/work/images/{nuke.output}/EXR_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_pub_mono:
-        definition: '@shot_root/publish/{nuke.output}/EXR_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
+        definition: '@shot_root/publish/{nuke.output}/EXR_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.exr'
         root_name: 'primary'
     nuke_shot_render_jpg:
-        definition: '@shot_root/work/images/{nuke.output}/JPG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
+        definition: '@shot_root/work/images/{nuke.output}/JPG_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
         root_name: 'primary'
     nuke_shot_render_pub_jpg:
-        definition: '@shot_root/publish/{nuke.output}/JPG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
+        definition: '@shot_root/publish/{nuke.output}/JPG_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.jpg'
         root_name: 'primary'
     nuke_shot_render_png:
-        definition: '@shot_root/work/images/{nuke.output}/PNG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
+        definition: '@shot_root/work/images/{nuke.output}/PNG_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
         root_name: 'primary'
     nuke_shot_render_pub_png:
-        definition: '@shot_root/publish/{nuke.output}/PNG_{Sequence}_{Shot}_{Step}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
+        definition: '@shot_root/publish/{nuke.output}/PNG_{Shot}_{Step}_v{version}/{Shot}_{Step}_{nuke.output}_v{version}.{SEQ}.png'
         root_name: 'primary'    
     nuke_shot_render_tiff:
-        definition: '@shot_root/work/images/{nuke.output}/tiff_{Sequence}_{Shot}_{Step}_{name}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
+        definition: '@shot_root/work/images/{nuke.output}/tiff_{Shot}_{Step}_{name}_v{version}/{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
         root_name: 'primary'
     nuke_shot_render_pub_tiff:
-        definition: '@shot_root/publish/{nuke.output}/TIFF_{Sequence}_{Shot}_{Step}_{name}_v{version}/{Sequence}_{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
+        definition: '@shot_root/publish/{nuke.output}/TIFF_{Shot}_{Step}_{name}_v{version}/{Shot}_{Step}_{nuke.output}_{name}_v{version}.{SEQ}.tiff'
         root_name: 'primary'
     # review output
     shot_quicktime_quick:
-        definition: '@shot_root/review/quickdaily/{Sequence}_{Shot}_{Step}_{iteration}.mov'
+        definition: '@shot_root/review/quickdaily/{Shot}_{Step}_{iteration}.mov'
         root_name: 'primary'
     nuke_shot_render_movie:
-        definition: '@shot_root/review/{Sequence}_{Shot}_{Step}_{nuke.output}_v{version}.mov'
+        definition: '@shot_root/review/{Shot}_{Step}_{nuke.output}_v{version}.mov'
         root_name: 'primary'
 
     #

@@ -230,7 +230,7 @@ settings.tk-multi-publish2.nuke.asset_step:
       Work Template: nuke_asset_work
   publish_plugins:
   - name: Publish to Shotgun
-    hook: "{self}/publish_file.py"
+    hook: "{config}/tk-multi-publish2/nuke/publish_file.py"
     settings: {}
   - name: Upload for review
     hook: "{self}/upload_version.py"
@@ -255,7 +255,7 @@ settings.tk-multi-publish2.nuke.shot_step:
       Work Template: nuke_shot_work
   publish_plugins:
   - name: Publish to Shotgun
-    hook: "{config}/tk-multi-publish2/publish_file.py"
+    hook: "{config}/tk-multi-publish2/nuke/publish_file.py"
     settings: {}
   - name: Upload for review
     hook: "{self}/upload_version.py"
@@ -445,7 +445,7 @@ settings.tk-multi-publish2.aftereffects.asset_step:
   - name: Upload for review
     hook: "{self}/upload_version.py:{engine}/tk-multi-publish2/basic/upload_version.py"
     settings:
-        Movie Output Module: Lossless with Alpha
+        Movie Output Module: SG_epx
   help_url: *help_url
   location: "@apps.tk-multi-publish2.location"
 
@@ -481,7 +481,7 @@ settings.tk-multi-publish2.aftereffects.shot_step:
   - name: Upload for review
     hook: "{self}/upload_version.py:{engine}/tk-multi-publish2/basic/upload_version.py"
     settings:
-        Movie Output Module: Lossless with Alpha
+        Movie Output Module: SG_epx
   help_url: *help_url
   location: "@apps.tk-multi-publish2.location"
 
