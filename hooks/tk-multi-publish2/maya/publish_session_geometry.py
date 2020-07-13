@@ -263,9 +263,9 @@ class MayaSessionGeometryPublishPlugin(HookBaseClass):
             # write shading group set assignments (Maya 2015+)
             "-writeFaceSets",
             # write uv's (only the current uv set gets written)
-            "-uvWrite"
+            "-uvWrite",
             # write uv's set 
-            " -writeUVSets"
+            "-writeUVSets"
         ]
 
         # find the animated frame range to use:
