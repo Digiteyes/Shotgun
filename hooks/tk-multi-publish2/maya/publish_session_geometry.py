@@ -265,7 +265,7 @@ class MayaSessionGeometryPublishPlugin(HookBaseClass):
             # write uv's (only the current uv set gets written)
             "-uvWrite"
             # write uv's set 
-            "-writeUVSets"
+            " -writeUVSets"
         ]
 
         # find the animated frame range to use:
