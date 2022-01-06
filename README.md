@@ -1,1 +1,1 @@
-# RepoDig
+# ShotgunConfig
